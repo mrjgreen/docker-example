@@ -1,31 +1,35 @@
-node {
-  stage('Clean Workspace') {
-    deleteDir()
-  }
-}
-agent any
-node {
-  stage('Build') {
-    steps {
-      sh '''make ci-build'''
+pipeline {
+  stages {
+    node {
+      stage('Clean Workspace') {
+        deleteDir()
+      }
     }
-  }
-}
-
-stage('Waiting for approval') {
-    input "Deploy to Production?"
-}
-
-node {
-  stage('Publish') {
-    steps {
-      sh '''make ci-publish'''
+    agent any
+    node {
+      stage('Build') {
+        steps {
+          sh '''make ci-build'''
+        }
+      }
     }
-  }
 
-  stage('Deploy') {
-    steps {
-      sh '''make ci-deploy'''
+    stage('Waiting for approval') {
+        input "Deploy to Production?"
+    }
+
+    node {
+      stage('Publish') {
+        steps {
+          sh '''make ci-publish'''
+        }
+      }
+
+      stage('Deploy') {
+        steps {
+          sh '''make ci-deploy'''
+        }
+      }
     }
   }
 }
