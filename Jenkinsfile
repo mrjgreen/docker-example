@@ -12,9 +12,7 @@ node {
 
 node {
   stage('Build') {
-    steps {
-      sh '''make ci-build'''
-    }
+    sh '''make ci-build'''
   }
 }
 
@@ -24,14 +22,10 @@ stage('Waiting for approval') {
 
 node {
   stage('Publish') {
-    steps {
-      sh '''make ci-publish'''
-    }
+    sh '''make ci-publish'''
   }
 
   stage('Deploy') {
-    steps {
-      sh '''make ci-deploy'''
-    }
+    sh '''make ci-deploy'''
   }
 }
