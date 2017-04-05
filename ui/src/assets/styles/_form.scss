@@ -1,0 +1,110 @@
+button, input, optgroup, select, textarea {
+    font: inherit;
+    margin: 0;
+}
+
+label, .control-label {
+	font-weight: 600;
+}
+
+.form-control.unboxed {
+	border-color:transparent;
+  padding-left: 0;
+}
+
+.radio,
+.checkbox {
+	display: none;
+
+	& + span {
+		padding: 0;
+		padding-right: 10px;
+	}
+
+	& + span:before {
+		font-family: FontAwesome;
+		font-size: 21px;
+		display: inline-block;
+		vertical-align: middle;
+		letter-spacing: 10px;
+		color: #CCCCCC;
+	}
+
+	&:checked + span:before {
+		color: $brand-primary;
+	}
+
+	&:disabled + span:before {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&:checked:disabled  + span:before {
+		color: #CCCCCC;
+	}
+}
+
+.checkbox {
+
+	& + span:before {
+		content: "\f0c8";
+	}
+
+	&:checked + span:before {
+		content: "\f14a";
+	}
+
+	&.rounded {
+		& + span:before {
+			content: "\f111";
+		}
+
+		&:checked + span:before {
+			content: "\f058";
+		}
+	}
+}
+
+.radio {
+
+	& + span:before {
+		content: "\f111";
+	}
+
+	&:checked + span:before {
+		content: "\f192";
+	}
+
+	&.squared {
+		& + span:before {
+			content: "\f0c8";
+		}
+
+		&:checked + span:before {
+			content: "\f14a";
+		}
+	}
+}
+
+// Placeholders
+.form-control {
+	&::-webkit-input-placeholder {
+		font-style: italic;
+		color: lighten($body-color, 35%);
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+		font-style: italic;
+		color: lighten($body-color, 35%);
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+		font-style: italic;
+		color: lighten($body-color, 35%);
+	}
+
+	&:-ms-input-placeholder {
+		font-style: italic;
+		color: lighten($body-color, 35%);
+	}
+}

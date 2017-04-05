@@ -1,0 +1,6 @@
+FROM node:latest
+
+ADD ./src /srv/app/src
+ADD ./node_modules /srv/app/node_modules
+
+CMD ["node", "/srv/app/src/index.js"]

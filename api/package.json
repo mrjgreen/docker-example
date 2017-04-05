@@ -1,0 +1,28 @@
+{
+  "name": "docker-api",
+  "version": "1.0.0",
+  "description": "Example docker API endpoint",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon -L src/index.js",
+    "test": "nyc --reporter=html mocha --recursive"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "bunyan": "^1.8.8",
+    "express": "^4.15.2",
+    "hiredis": "0.5.0",
+    "node-async-router": "0.0.2",
+    "redis": "2.7.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "node-fetch": "^1.6.3",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.1.2"
+  }
+}

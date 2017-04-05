@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.local
+    ports:
+      - 8080:8080
+    environment:
+      - API_URL=http://localhost:8081
+    volumes:
+      - ./ui:/app
+    working_dir: /app
+    command: "npm start"
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.local
+    ports:
+      - 8081:80
+    networks:
+      - back_end
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./api:/app
+    working_dir: /app
+    command: "npm start"
+
+  redis:
+    image: "redis:latest"
+    networks:
+      - back_end
+
+networks:
+  back_end:

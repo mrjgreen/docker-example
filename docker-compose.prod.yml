@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.prod
+    image: prod-1.joeg.co.uk:5000/dockerexample/ui:latest
+    ports:
+      - 80:80
+
+  api:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.prod
+    image: prod-1.joeg.co.uk:5000/dockerexample/api:latest
+    ports:
+      - 8081:80
+    networks:
+      - back_end
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: "redis:latest"
+    networks:
+      - back_end
+
+networks:
+  back_end:

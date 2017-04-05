@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  ui:
+    environment:
+      - NODE_ENV=production
+      - API_URL=http://prod-1.joeg.co.uk:8081
