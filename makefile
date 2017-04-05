@@ -36,7 +36,9 @@ deploy:
 # Tasks required for ci steps
 #################################
 
-ci-build: build-prod publish
+ci-build: build-prod
+
+ci-publish: publish
 
 ci-deploy: deploy
 
