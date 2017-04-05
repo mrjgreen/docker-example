@@ -2,15 +2,11 @@ node {
   stage('Clean Workspace') {
     deleteDir()
   }
-}
 
-node {
   stage('Checkout') {
     checkout scm
   }
-}
 
-node {
   stage('Build') {
     sh '''make ci-build'''
   }
