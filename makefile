@@ -8,10 +8,7 @@ build:
 	docker-compose run api npm install
 	docker-compose run ui npm install
 
-build-prod:
-	docker-compose build
-	docker-compose run api npm install
-	docker-compose run ui npm install
+build-prod: build
 	docker-compose -f docker-compose.yml -f docker-compose.build.prod.yml run ui npm run build
 	# We use the build docker file here and only here to correctly tag our images
 	docker-compose -f docker-compose.prod.yml build
