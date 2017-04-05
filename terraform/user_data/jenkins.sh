@@ -8,6 +8,7 @@ echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenk
 
 apt-get update -q
 apt-get install -yq jenkins
+apt-get install -yq make
 
 cat << EOF > /srv/install-jenkins-plugins.sh
 #!/bin/bash
@@ -74,6 +75,8 @@ EOF
 chmod a+x /srv/install-jenkins-plugins.sh
 
 /srv/install-jenkins-plugins.sh /var/lib/jenkins/plugins git blueocean delivery-pipeline-plugin build-timeout cloudbees-folder copyartifact git github matrix-auth parameterized-trigger ssh ssh-agent timestamper ws-cleanup
+
+sed -i 's/JAVA_ARGS="/JAVA_ARGS="-Xmx512m -XX:MaxPermSize=256m /' /etc/default/jenkins
 
 # So jenkins can run docker commands
 usermod -a -G docker jenkins
